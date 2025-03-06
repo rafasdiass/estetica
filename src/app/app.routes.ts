@@ -27,12 +27,7 @@ export const routes: Routes = [
     ],
   },
 
-  // Páginas Separadas
-  { path: 'procedimentos-page', component: ProcedimentosComponent }, // Página completa de Procedimentos
-  { path: 'galeria-page', component: GaleriaComponent }, // Página completa de Galeria
-  { path: 'localizacao-page', component: LocalizacaoComponent }, // Página completa de Localização
-  { path: 'contato', component: ContatoComponent }, // Página de Contato
-  { path: 'sobre', component: AboutComponent }, // Página Sobre a Clínica
+ 
 
   // Rota Coringa (Redireciona para Home se a URL for inválida)
   { path: '**', redirectTo: '' },

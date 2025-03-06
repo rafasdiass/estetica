@@ -3,16 +3,16 @@ import {
   OnInit,
   HostListener,
   ElementRef,
-  computed,
   Inject,
-  PLATFORM_ID,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu'; // Import necessário
+import { MatMenuModule } from '@angular/material/menu';
+import { computed } from '@angular/core';
+import { PLATFORM_ID } from '@angular/core';
 
 import { NavigationService } from '../../services/navigation.service';
 import { NavbarService } from '../../services/navbar.service';
@@ -26,26 +26,28 @@ import { NavbarService } from '../../services/navbar.service';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule, // Adicionado aos imports
+    MatMenuModule,
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  // Rotas do menu
+  // Ajustamos as rotas do menu:
+  // - Home: trata-se de uma página (/home)
+  // - Os demais são seções (sem barra), que serão roladas na HomeComponent.
   menuRoutes = [
-    { route: '/home', label: 'Início', icon: 'home', type: 'page' },
+    { route: '/home', label: 'Home', icon: 'home', type: 'page' },
     {
-      route: '/procedimentos',
+      route: 'procedimentos',
       label: 'Procedimentos',
       icon: 'content_cut',
-      type: 'page',
+      type: 'section',
     },
     {
-      route: '/galeria',
+      route: 'galeria',
       label: 'Galeria',
       icon: 'photo_library',
-      type: 'page',
+      type: 'section',
     },
     {
       route: 'localizacao',
@@ -60,14 +62,14 @@ export class NavbarComponent implements OnInit {
   activePage = computed(() => this.navigationService.currentPage());
   activeSection = computed(() => this.navigationService.currentSection());
 
-  // Signal do estado do Navbar (aberto/fechado)
+  // Signal para o estado do Navbar (aberto ou fechado)
   isNavbarOpen = computed(() => this.navbarService.isNavbarOpen);
 
   constructor(
     private navigationService: NavigationService,
     private navbarService: NavbarService,
     private elementRef: ElementRef,
-    @Inject(PLATFORM_ID) private platformId: Object // Injetado para checar se estamos no browser
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
@@ -83,21 +85,9 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  checkIfMobile(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
-    const isMobile = window.innerWidth <= 991;
-    if (!isMobile) {
-      this.navbarService.closeNavbar();
-    }
-  }
-
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
+    if (!isPlatformBrowser(this.platformId)) return;
     const target = event.target as HTMLElement;
     if (
       window.innerWidth <= 991 &&
@@ -108,6 +98,21 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  /**
+   * Verifica se estamos em dispositivo móvel e, se não, fecha o menu.
+   */
+  checkIfMobile(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const isMobile = window.innerWidth <= 991;
+    if (!isMobile) {
+      this.navbarService.closeNavbar();
+    }
+  }
+
+  /**
+   * Navega para uma página ou seção.
+   * Se a rota começar com '/', navega para página; senão, para uma seção da home.
+   */
   navegarPara(rotaOuSecao: string, event: Event): void {
     event.preventDefault();
     if (rotaOuSecao.startsWith('/')) {
@@ -121,9 +126,7 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleNavbar(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
+    if (!isPlatformBrowser(this.platformId)) return;
     if (window.innerWidth <= 991) {
       this.navbarService.toggleNavbar();
     }
