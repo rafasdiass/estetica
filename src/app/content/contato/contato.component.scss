@@ -1,0 +1,84 @@
+.contato-container {
+    background-color: #faf2e6;
+    /* Fundo bege suave */
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    .title {
+        color: #4f3d2f;
+        /* Tom marrom escuro */
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+    }
+
+    .descricao {
+        color: #555;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Botão customizado sem fundo azul */
+    button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 4px;
+        background-color: #ffffff !important;
+        /* Fundo branco */
+        color: #4f3d2f !important;
+        /* Cor do texto: marrom escuro */
+        border: 1px solid #e4d2bb;
+        /* Borda sutil */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    .whatsapp-icon {
+        font-size: 1.8rem;
+        color: #25d366;
+        /* Cor original do WhatsApp */
+        transition: color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 600px) {
+    .contato-container {
+        padding: 1.5rem;
+
+        .title {
+            font-size: 1.8rem;
+        }
+
+        .descricao {
+            font-size: 1rem;
+        }
+
+        button {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .whatsapp-icon {
+            font-size: 1.6rem;
+        }
+    }
+}
