@@ -5,7 +5,7 @@
     <!-- Grid de itens da galeria -->
     <div class="galeria-grid">
         <div class="galeria-item" *ngFor="let item of itensGaleria" (click)="abrirModal(item)">
-            <!-- Exibe a imagem principal do item -->
+            <!-- Exibe a imagem única do item -->
             <img [src]="item.imagem" [alt]="item.titulo">
 
             <!-- Rótulos opcionais conforme o tipo -->
@@ -24,24 +24,9 @@
             &times;
         </button>
 
-        <!-- Se for 'antesDepois', exibe imagens Antes/Depois lado a lado -->
-        <div *ngIf="isAntesDepois(itemSelecionado!)" class="antes-depois-layout">
-            <div class="antes">
-                <h4>Antes</h4>
-                <img [src]="itemSelecionado!.imagemAntes" alt="Antes">
-            </div>
-            <div class="depois">
-                <h4>Depois</h4>
-                <img [src]="itemSelecionado!.imagemDepois" alt="Depois">
-            </div>
-            <p class="descricao">{{ itemSelecionado!.descricao }}</p>
-        </div>
-
-        <!-- Se for 'procedimento' ou 'promocional', exibe apenas uma imagem -->
-        <div *ngIf="!isAntesDepois(itemSelecionado!)">
-            <h3>{{ itemSelecionado!.titulo }}</h3>
-            <img [src]="itemSelecionado!.imagem" [alt]="itemSelecionado!.titulo" class="lightbox-image">
-            <p class="descricao">{{ itemSelecionado!.descricao }}</p>
-        </div>
+        <!-- Exibe apenas uma imagem (pois o antesDepois já está numa foto só) -->
+        <h3>{{ itemSelecionado!.titulo }}</h3>
+        <img [src]="itemSelecionado!.imagem" [alt]="itemSelecionado!.titulo" class="lightbox-image">
+        <p class="descricao">{{ itemSelecionado!.descricao }}</p>
     </div>
 </div>

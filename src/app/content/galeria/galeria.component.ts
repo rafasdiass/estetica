@@ -17,11 +17,10 @@ export class GaleriaComponent implements OnInit {
   itemSelecionado: Galeria | null = null;
   modalVisivel = false;
 
-  constructor(
-    private galeriaService: GaleriaService // Agora reconhece como token injetável
-  ) {}
+  constructor(private galeriaService: GaleriaService) {}
 
   ngOnInit(): void {
+    // Carrega os itens do serviço
     this.itensGaleria = this.galeriaService.carregarGaleria();
   }
 
@@ -38,9 +37,11 @@ export class GaleriaComponent implements OnInit {
   isAntesDepois(item: Galeria): boolean {
     return item.tipo === 'antesDepois';
   }
+
   isProcedimento(item: Galeria): boolean {
     return item.tipo === 'procedimento';
   }
+
   isPromocional(item: Galeria): boolean {
     return item.tipo === 'promocional';
   }
