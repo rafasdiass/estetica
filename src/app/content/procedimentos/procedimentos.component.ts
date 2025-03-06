@@ -30,7 +30,7 @@ export class ProcedimentosComponent implements OnInit, OnDestroy {
       titulo: 'Botox',
       descricao:
         'Tratamento com toxina botulínica para suavizar rugas e linhas de expressão.',
-      imagem: '/assets/imagens/procedimento-botox.jpg',
+      imagem: '/assets/imagens/botox.jpg',
       valor: 320,
     },
     {
