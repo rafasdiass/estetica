@@ -20,17 +20,13 @@ export class ProcedimentosComponent implements OnInit, OnDestroy {
   currentIndex = 0;
   loading = true;
 
-  /**
-   * Lista de procedimentos com dados profissionais
-   * e imagens representativas.
-   */
   procedimentos: Procedimento[] = [
     {
       id: 1,
       titulo: 'Botox',
       descricao:
         'Tratamento com toxina botulínica para suavizar rugas e linhas de expressão.',
-      imagem: '/assets/imagens/botox.jpg',
+      imagem: '/assets/images/botox.jpg',
       valor: 320,
     },
     {
@@ -115,7 +111,6 @@ export class ProcedimentosComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Pré-carrega as imagens e inicia o autoSlide no navegador
     this.preloadItems().then(() => {
       if (this.isBrowser) {
         this.procedimentoService.startAutoSlide(5000, () => this.nextSlide());
@@ -125,13 +120,12 @@ export class ProcedimentosComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Para o autoSlide no momento em que o componente é destruído
     if (this.isBrowser) {
       this.procedimentoService.stopAutoSlide();
     }
   }
 
-  /** Carrega todas as imagens no navegador para evitar flash ou erro SSR. */
+  /** Pré-carrega as imagens para evitar flash e erros em SSR */
   async preloadItems(): Promise<void> {
     if (!this.isBrowser) return;
     const promises = this.procedimentos.map((item) => {
@@ -145,25 +139,21 @@ export class ProcedimentosComponent implements OnInit, OnDestroy {
     await Promise.all(promises);
   }
 
-  /** Passa para o próximo slide */
   nextSlide(): void {
     this.currentIndex = (this.currentIndex + 1) % this.procedimentos.length;
   }
 
-  /** Volta para o slide anterior */
   prevSlide(): void {
     this.currentIndex =
       (this.currentIndex - 1 + this.procedimentos.length) %
       this.procedimentos.length;
   }
 
-  /** Seleciona um slide específico ao clicar em um card */
   setSlide(index: number): void {
     this.currentIndex = index;
     this.resetAutoSlide();
   }
 
-  /** Reinicia o autoSlide toda vez que um slide é selecionado manualmente */
   resetAutoSlide(): void {
     this.procedimentoService.stopAutoSlide();
     this.procedimentoService.startAutoSlide(5000, () => this.nextSlide());

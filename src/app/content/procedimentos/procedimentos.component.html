@@ -1,49 +1,35 @@
 <div class="container my-4" *ngIf="!loading">
-
-    <!-- Carrossel Principal -->
+    <!-- Carousel Principal -->
     <div id="procedimentosCarousel" class="carousel position-relative">
-
         <!-- Slides -->
         <div class="carousel-inner">
             <div class="carousel-item" [ngClass]="{ 'active': i === currentIndex }"
                 *ngFor="let item of procedimentos; let i = index">
                 <img [src]="item.imagem" [alt]="item.titulo" class="d-block w-100" />
-                <div class="carousel-caption d-none d-md-block">
-                    <!-- Exibe apenas a descrição e valor, sem título -->
-                    <p>{{ item.descricao }}</p>
-                    <p>Valor: {{ item.valor | currency:'BRL' }}</p>
-                </div>
             </div>
         </div>
 
         <!-- Botão "Anterior" -->
-        <button class="btn btn-link position-absolute top-50 start-0 translate-middle-y ms-2" type="button"
+        <button class="btn btn-link position-absolute top-50 start-0 translate-middle-y ms-2 nav-btn" type="button"
             (click)="prevSlide()">
             <i class="bi bi-chevron-left fs-2 text-primary"></i>
             <span class="visually-hidden">Anterior</span>
         </button>
 
         <!-- Botão "Próximo" -->
-        <button class="btn btn-link position-absolute top-50 end-0 translate-middle-y me-2" type="button"
+        <button class="btn btn-link position-absolute top-50 end-0 translate-middle-y me-2 nav-btn" type="button"
             (click)="nextSlide()">
             <i class="bi bi-chevron-right fs-2 text-primary"></i>
             <span class="visually-hidden">Próximo</span>
         </button>
-
     </div>
 
-    <!-- Exibe somente o título do procedimento selecionado -->
-    <div class="selected-procedure text-center mt-3">
-        <h2>{{ procedimentos[currentIndex].titulo }}</h2>
+    <!-- Descrição do procedimento (exibida abaixo da imagem) -->
+    <div class="procedure-description text-center mt-3">
+        <h2 class="procedure-title">{{ procedimentos[currentIndex].titulo }}</h2>
+        <p class="procedure-desc">{{ procedimentos[currentIndex].descricao }}</p>
+        <p class="procedure-value">Valor: {{ procedimentos[currentIndex].valor | currency:'BRL' }}</p>
     </div>
-
-    <!-- Exibe apenas UM cartão, correspondente ao procedimento atual -->
-    <div class="procedimentos-cards mt-4">
-        <div class="procedimento-card">
-            <img [src]="procedimentos[currentIndex].imagem" [alt]="procedimentos[currentIndex].titulo" />
-        </div>
-    </div>
-
 </div>
 
 <!-- Mensagem de carregamento -->
