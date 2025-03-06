@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="navbar">
+    <span class="clinic-name" (click)="navegarPara('/home', $event)">
+        RS Fisio Estética & Saúde
+    </span>
+    <span class="spacer"></span>
+
+    <!-- Navegação para Desktop -->
+    <span class="desktop-nav">
+        <button mat-button *ngFor="let item of menuRoutes" (click)="navegarPara(item.route, $event)">
+            <mat-icon class="nav-icon">{{ item.icon }}</mat-icon>
+            <span class="nav-label">{{ item.label }}</span>
+        </button>
+    </span>
+
+    <!-- Navegação para Mobile (menu sanduíche) -->
+    <span class="mobile-nav">
+        <button mat-icon-button [matMenuTriggerFor]="mobileMenu" aria-label="Abrir Menu">
+            <mat-icon class="nav-icon">menu</mat-icon>
+        </button>
+        <mat-menu #mobileMenu="matMenu">
+            <button mat-menu-item *ngFor="let item of menuRoutes" (click)="navegarPara(item.route, $event)">
+                <mat-icon class="nav-icon">{{ item.icon }}</mat-icon>
+                <span class="nav-label">{{ item.label }}</span>
+            </button>
+        </mat-menu>
+    </span>
+</mat-toolbar>

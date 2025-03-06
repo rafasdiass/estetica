@@ -1,0 +1,103 @@
+/* Container geral: tom bege, bordas */
+.container.my-4 {
+    background-color: #f5ead7;
+    /* Tom de bege que lembre pele */
+    border: 3px solid #e4d2bb;
+    /* Borda um pouco mais escura */
+    padding: 2rem 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Imagens do carrossel */
+.carousel-item img {
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    max-height: 600px;
+    object-fit: cover;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Zoom leve no slide ativo */
+.carousel-item.active img {
+    transform: scale(1.01);
+}
+
+/* Legenda do carrossel */
+.carousel-caption {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    p {
+        margin: 0.5rem 0;
+        color: #fff;
+    }
+}
+
+/* Botões de navegação (Anterior/Próximo) */
+.btn.btn-link {
+    color: #0d6efd;
+
+    &:hover {
+        color: #0b5ed7;
+    }
+
+    i {
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* Título do procedimento selecionado (central) */
+.selected-procedure {
+    h2 {
+        font-size: 1.5rem;
+        color: #4f3d2f;
+        /* Tom marrom */
+        margin: 0;
+    }
+}
+
+/* Container do único cartão */
+.procedimentos-cards {
+    display: flex;
+    justify-content: center;
+    /* Centraliza o card */
+    margin-top: 1rem;
+}
+
+/* Cartão único com tom escuro */
+.procedimento-card {
+    width: 160px;
+    height: 220px;
+    background-color: #c8b49c;
+    /* Tom mais escuro */
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, border 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Imagem do card */
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+
+    &:hover {
+        transform: scale(1.04);
+        border-color: rgba(13, 110, 253, 0.5);
+    }
+}
+
+/* Mensagem de carregamento */
+.text-center.mt-5 {
+    font-size: 1.25rem;
+    color: #212529;
+}

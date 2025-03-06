@@ -1,0 +1,91 @@
+/* Estilos gerais da navbar */
+.navbar {
+    background-color: #beaf9d; // Cor definida no Figma (tom neutro/bege)
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+    .clinic-name {
+        font-weight: bold;
+        font-size: 1.6rem;
+        cursor: pointer;
+        transition: transform 0.3s ease, font-size 0.3s ease;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    .spacer {
+        flex: 1;
+    }
+
+    /* Navegação para Desktop */
+    .desktop-nav {
+        display: inline-flex;
+        align-items: center;
+
+        button {
+            font-size: 1.1rem;
+            margin-right: 1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+            }
+
+            mat-icon.nav-icon {
+                font-size: 1.8rem;
+                margin-right: 0.5rem;
+            }
+
+            .nav-label {
+                font-weight: 500;
+            }
+        }
+    }
+
+    /* Navegação para Mobile (menu sanduíche) */
+    .mobile-nav {
+        display: none;
+
+        button {
+            font-size: 1.8rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+            }
+
+            mat-icon.nav-icon {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+/* Responsividade para telas até 991px */
+@media (max-width: 991px) {
+    .navbar {
+        padding: 0 1rem;
+
+        .clinic-name {
+            font-size: 1.8rem;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: inline-flex;
+        }
+    }
+}

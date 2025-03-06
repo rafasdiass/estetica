@@ -1,0 +1,16 @@
+<mat-card class="hero"
+    [ngStyle]="{'background-image': 'url(' + heroBannerUrl + ')', 'background-position': bgPosition}">
+    <mat-card-content class="hero-card" [class.expanded]="isExpanded">
+        <mat-card-title>{{ heroTitle }}</mat-card-title>
+        <mat-card-subtitle>{{ heroText }}</mat-card-subtitle>
+        <mat-card-actions>
+            <button mat-raised-button (click)="toggleExpand()">
+                {{ isExpanded ? 'Fechar' : 'Saiba Mais' }}
+                <mat-icon>{{ isExpanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+            </button>
+        </mat-card-actions>
+        <div class="expansion" *ngIf="isExpanded">
+            <p>{{ expandedText }}</p>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,29 @@
+<footer class="footer">
+    <div class="container py-3">
+        <div class="row align-items-center">
+            <!-- Ícones à esquerda -->
+            <div class="col-md-6 text-start text-center mb-3 mb-md-0">
+                <div class="contact-info">
+                    <a [href]="instagramUrl" target="_blank" aria-label="Instagram" class="icon-link">
+                        <i class="bi bi-instagram social-icon"></i>
+                    </a>
+                    <a [href]="facebookUrl" target="_blank" aria-label="Facebook" class="icon-link">
+                        <i class="bi bi-facebook social-icon"></i>
+                    </a>
+                    <a [href]="'mailto:' + email" aria-label="Email" class="icon-link">
+                        <i class="bi bi-envelope-fill social-icon"></i>
+                    </a>
+                    <a [href]="whatsappUrl" target="_blank" aria-label="WhatsApp" class="icon-link">
+                        <i class="bi bi-whatsapp social-icon"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Texto à direita -->
+            <div class="col-md-6 text-md-end text-center">
+                <small class="footer-text">
+                    &copy; {{ currentYear }} Rafaella Solheiro - Todos os direitos reservados.
+                </small>
+            </div>
+        </div>
+    </div>
+</footer>

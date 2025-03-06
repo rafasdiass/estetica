@@ -1,0 +1,16 @@
+<div class="localizacao-container container mt-4">
+    <h2 class="title text-center mb-4">Localização</h2>
+
+    <!-- Card de Endereço -->
+    <div class="address-card card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Endereço</h5>
+            <p class="card-text">{{ address }}</p>
+        </div>
+    </div>
+
+    <!-- Mapa incorporado -->
+    <div class="map-container">
+        <iframe [src]="mapUrl" allowfullscreen></iframe>
+    </div>
+</div>

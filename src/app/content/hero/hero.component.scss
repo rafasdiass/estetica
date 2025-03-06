@@ -1,0 +1,128 @@
+.hero {
+    position: relative;
+    min-height: 50vh; // Altura inicial compacta
+    padding: 4rem 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-position 0.3s ease-out;
+
+    // Overlay para suavizar a imagem com um tom escuro
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); // 50% de opacidade
+        z-index: 1;
+    }
+
+    // Card com efeito glassmorphism
+    .hero-card {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 500px; // Largura reduzida para o card
+        margin: 0 auto; // Centralizado
+        background: rgba(255, 255, 255, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+        // Quando expandido, adiciona um padding extra na parte inferior
+        &.expanded {
+            padding-bottom: 3rem;
+        }
+
+        mat-card-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        mat-card-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: #f0f0f0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            line-height: 1.5;
+        }
+
+        mat-card-actions {
+            display: flex;
+            justify-content: center;
+
+            button {
+                font-size: 1.25rem;
+                font-weight: 600;
+                padding: 0.75rem 1.5rem;
+                border-radius: 8px;
+                text-transform: uppercase;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+                background-color: #f5f5dc; // Fundo bege
+                color: #5e4b3c; // Texto em tom escuro para contraste
+                border: none;
+
+                mat-icon {
+                    margin-left: 0.5rem;
+                }
+
+                &:hover {
+                    transform: translateY(-3px);
+                    background-color: #e8e1d3; // Variante de bege no hover
+                }
+            }
+        }
+
+        .expansion {
+            margin-top: 1.5rem;
+            text-align: left;
+
+            p {
+                font-size: 1.2rem; // Tamanho ligeiramente aumentado para melhor leitura
+                line-height: 1.6; // Espaçamento entre linhas aprimorado
+                color: #f0f0f0; // Cor suave para manter contraste com o overlay
+                font-family: 'Roboto', sans-serif; // Fonte moderna (certifique-se de que a fonte esteja disponível)
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); // Sombra sutil para profundidade
+                margin-bottom: 1rem;
+                text-align: justify; // Alinha o texto de forma justificada para uma apresentação formal
+                white-space: pre-line; // Respeita quebras de linha presentes no texto
+            }
+        }
+    }
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 1rem;
+
+        .hero-card {
+            padding: 1.5rem;
+
+            mat-card-title {
+                font-size: 2.5rem;
+            }
+
+            mat-card-subtitle {
+                font-size: 1.125rem;
+            }
+
+            mat-card-actions button {
+                font-size: 1.125rem;
+            }
+
+            .expansion {
+                p {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}

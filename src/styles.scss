@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Bootstrap e Bootstrap Icons */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+/* Import Google Fonts - Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Import Material Icons */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', "Helvetica Neue", sans-serif;
+    background-color: #e8e0d8;
+    /* Tom bege mais escuro */
+}

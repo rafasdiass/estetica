@@ -1,0 +1,233 @@
+/* Container principal da galeria */
+.galeria-container {
+    background-color: #f5ead7;
+    /* Tom bege suave, inspirado em pele */
+    border: 3px solid #e4d2bb;
+    /* Borda ligeiramente mais escura */
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Título da galeria */
+.galeria-container h2 {
+    font-size: 2rem;
+    color: #4f3d2f;
+    /* Tom marrom escuro */
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Grid de itens da galeria */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+/* Cada item da galeria */
+.galeria-item {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 0.3rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.02);
+        border-color: rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 0.3rem;
+    }
+
+    /* Rótulo para indicar o tipo do item */
+    .galeria-label {
+        position: absolute;
+        bottom: 0.5rem;
+        left: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+    }
+}
+
+/* Modal (Lightbox) */
+.lightbox-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: auto;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão de fechar o modal */
+.close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #000;
+    cursor: pointer;
+    z-index: 1;
+
+    &:hover {
+        color: #333;
+    }
+}
+
+/* Layout para itens do tipo "antesDepois" */
+.antes-depois-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+
+    .antes,
+    .depois {
+        flex: 1 1 45%;
+        text-align: center;
+
+        h4 {
+            margin-bottom: 0.5rem;
+            color: #4f3d2f;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.3rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    .descricao {
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 1rem;
+        color: #555;
+    }
+}
+
+/* Layout para itens de imagem única */
+.lightbox-image {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+    margin: 0.5rem auto;
+}
+
+/* Descrição padrão do modal */
+.descricao {
+    text-align: center;
+    margin-top: 1rem;
+    color: #555;
+    font-size: 1rem;
+}
+
+/* Animação de fadeIn para o modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Estilo para a linha única de cartões (inspirado no Prime Video) */
+.procedimentos-cards {
+    display: inline-flex;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.5rem;
+    width: 100%;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+
+    /* Custom scrollbar (opcional) */
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #f5ead7;
+
+    &::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f5ead7;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 4px;
+    }
+}
+
+/* Cada cartão de procedimento */
+.procedimento-card {
+    display: inline-block;
+    vertical-align: top;
+    width: 160px;
+    height: 220px;
+    background-color: #c8b49c;
+    /* Tom mais escuro para destacar o card */
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, border 0.3s ease;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        display: block;
+    }
+
+    &:hover {
+        transform: scale(1.04);
+        border-color: rgba(13, 110, 253, 0.5);
+    }
+}
+
+/* Destaque para o cartão selecionado */
+.procedimento-card.active-card {
+    border-color: #0d6efd;
+    transform: scale(1.04);
+}

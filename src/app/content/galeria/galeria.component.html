@@ -1,0 +1,47 @@
+<!-- Container principal da galeria -->
+<div class="container my-4 galeria-container">
+    <h2 class="text-center mb-4">Galeria</h2>
+
+    <!-- Grid de itens da galeria -->
+    <div class="galeria-grid">
+        <div class="galeria-item" *ngFor="let item of itensGaleria" (click)="abrirModal(item)">
+            <!-- Exibe a imagem principal do item -->
+            <img [src]="item.imagem" [alt]="item.titulo">
+
+            <!-- Rótulos opcionais conforme o tipo -->
+            <span class="galeria-label" *ngIf="isAntesDepois(item)">AntesDepois</span>
+            <span class="galeria-label" *ngIf="isProcedimento(item)">Procedimento</span>
+            <span class="galeria-label" *ngIf="isPromocional(item)">Promoção</span>
+        </div>
+    </div>
+</div>
+
+<!-- Modal (lightbox) exibido se 'modalVisivel' for true e houver um 'itemSelecionado' -->
+<div class="lightbox-backdrop" *ngIf="modalVisivel && itemSelecionado">
+    <div class="lightbox-content">
+        <!-- Botão para fechar o modal -->
+        <button type="button" class="close-button" (click)="fecharModal()">
+            &times;
+        </button>
+
+        <!-- Se for 'antesDepois', exibe imagens Antes/Depois lado a lado -->
+        <div *ngIf="isAntesDepois(itemSelecionado!)" class="antes-depois-layout">
+            <div class="antes">
+                <h4>Antes</h4>
+                <img [src]="itemSelecionado!.imagemAntes" alt="Antes">
+            </div>
+            <div class="depois">
+                <h4>Depois</h4>
+                <img [src]="itemSelecionado!.imagemDepois" alt="Depois">
+            </div>
+            <p class="descricao">{{ itemSelecionado!.descricao }}</p>
+        </div>
+
+        <!-- Se for 'procedimento' ou 'promocional', exibe apenas uma imagem -->
+        <div *ngIf="!isAntesDepois(itemSelecionado!)">
+            <h3>{{ itemSelecionado!.titulo }}</h3>
+            <img [src]="itemSelecionado!.imagem" [alt]="itemSelecionado!.titulo" class="lightbox-image">
+            <p class="descricao">{{ itemSelecionado!.descricao }}</p>
+        </div>
+    </div>
+</div>
