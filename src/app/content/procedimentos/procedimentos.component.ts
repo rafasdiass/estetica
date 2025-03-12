@@ -30,19 +30,42 @@ export class ProcedimentosComponent implements OnInit, OnDestroy {
       valor: 320,
     },
     {
+      id: 9,
+      titulo: 'Banho de Lua',
+      descricao: 'Bronzeamento gradual e uniforme para realçar o tom de pele.',
+      imagem: '/assets/images/procedimentos/banho1.jpeg',
+      valor: 220,
+    },
+    {
       id: 2,
       titulo: 'Limpeza de Pele',
       descricao:
         'Limpeza profunda e revitalização facial, remove impurezas e células mortas.',
-      imagem: '/assets/imagens/procedimento-limpeza.jpg',
+      imagem: '/assets/images/procedimentos/limpeza.jpeg',
       valor: 180,
+    },
+    {
+      id: 8,
+      titulo: 'Peim (Varizes)',
+      descricao:
+        'Tratamento minimamente invasivo para varizes e vasinhos nas pernas.',
+      imagem: '/assets/images/procedimentos/peim.jpeg',
+      valor: 520,
+    },
+    {
+      id: 11,
+      titulo: 'Peeling',
+      descricao:
+        'Procedimento estético que promove a renovação da pele através da aplicação de ácidos específicos.',
+      imagem: '/assets/images/procedimentos/peeling.jpeg',
+      valor: 300,
     },
     {
       id: 3,
       titulo: 'Microagulhamento',
       descricao:
         'Estimula a produção de colágeno através de microperfurações controladas.',
-      imagem: '/assets/imagens/procedimento-microagulhamento.jpg',
+      imagem: '/assets/images/procedimento-microagulhamento.jpg',
       valor: 250,
     },
     {
@@ -76,27 +99,13 @@ export class ProcedimentosComponent implements OnInit, OnDestroy {
       imagem: '/assets/imagens/procedimento-celulites.jpg',
       valor: 280,
     },
-    {
-      id: 8,
-      titulo: 'Peim (Varizes)',
-      descricao:
-        'Tratamento minimamente invasivo para varizes e vasinhos nas pernas.',
-      imagem: '/assets/imagens/procedimento-peim.jpg',
-      valor: 520,
-    },
-    {
-      id: 9,
-      titulo: 'Banho de Lua',
-      descricao: 'Bronzeamento gradual e uniforme para realçar o tom de pele.',
-      imagem: '/assets/imagens/procedimento-banho-de-lua.jpg',
-      valor: 220,
-    },
+
     {
       id: 10,
       titulo: 'Bronze de Cabine',
       descricao:
         'Bronzeamento artificial em cabine para um resultado uniforme e rápido.',
-      imagem: '/assets/imagens/procedimento-bronze.jpg',
+      imagem: '/assets/images/procedimento-bronze.jpg',
       valor: 200,
     },
   ];
